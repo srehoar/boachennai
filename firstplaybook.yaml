@@ -1,0 +1,26 @@
+--- # my first playbook
+ - hosts: client
+   remote_user: ansible
+   become: yes
+   tasks:
+   - name: installing Apache
+     yum:
+      name: httpd
+      state: latest
+   - name: starting Apache service
+     service:
+      name: httpd
+      state: started
+   - name: Create file index.html
+     file:
+      state: touch
+      path: /var/www/html/test.html
+   - name: copy contents to index.html
+     copy:
+      content: "welcome to playbook"
+      dest: /var/www/html/test.html
+   - name: open firewall
+     firewalld:
+      service: http
+      permanent: true
+      state: enabled 
