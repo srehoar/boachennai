@@ -1,0 +1,12 @@
+# pool usage in playbook
+ - hosts: client
+   remote_user: ansible
+   become: yes
+   tasks:
+    - name: download in time
+      get_url:
+      # url: https://speed.hetzner.de/10GB.bin
+       url: https://docs.ansible.com/ansible/2.5/user_guide/playbooks_intro.html#basics
+       dest: /tmp
+      async: 20
+      poll: 5

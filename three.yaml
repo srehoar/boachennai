@@ -1,0 +1,18 @@
+--- # my first playbook
+ - hosts: client
+   remote_user: ansible
+   become: yes
+   vars:
+    web_package: http
+    remote_access: telnet
+   tasks:
+   - name: install apache
+     yum:
+      name: "{{ web_package }}"
+      state: latest
+    # ignore_errors: yes
+   - name: Install telnet
+     yum:
+      name: "{{ remote_access }}"
+      state: latest
+ 
