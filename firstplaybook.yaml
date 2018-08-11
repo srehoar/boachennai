@@ -1,7 +1,7 @@
 --- # my first playbook
  - hosts: client
    remote_user: ansible
-   become: yes
+   #become: yes
    tasks:
    - name: installing Apache
      yum:
